@@ -1,0 +1,258 @@
+CREATE TABLE FAV_UserMaster (
+    FAV_UserSeqNo INT AUTO_INCREMENT,
+    FAV_UserID VARCHAR(10),
+    FAV_UserName VARCHAR(255) NOT NULL,
+    FAV_UserPWD VARCHAR(255) NOT NULL,
+    FAV_UserRole VARCHAR(255),
+    FAV_UserDept VARCHAR(255),
+    FAV_UserMgr VARCHAR(255),
+    FAV_CreatedBy VARCHAR(255),
+    FAV_CreatedDt DATE,
+    FAV_UpdatedBy VARCHAR(255),
+    FAV_UpdatedDt DATE
+);
+
+CREATE TABLE FAV_CaseDetails (
+    FAV_CaseSeqNo INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_FileNo VARCHAR (10) NOT NULL,
+    FAV_VendorName VARCHAR (255) NOT NULL,
+    FAV_CaseStatus VARCHAR (50) NOT NUll,
+    FAV_CaseSection VARCHAR (255),
+    FAV_ChkParam VARCHAR (255),
+    FAV_VerRemark VARCHAR (255),
+    FAV_ClientRemark VARCHAR (255),
+    FAV_FileVerStatus VARCHAR (50),
+    FAV_ReVerRemark VARCHAR (255),
+    FAV_CreatedBy VARCHAR (50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE
+);
+
+
+CREATE TABLE FAV_FileRemarkDtl (
+    FAV_FRDSeqNo INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_FRDFileNo VARCHAR (10) NOT NULL,
+    FAV_FRDVendorName VARCHAR (255) NOT NULL,
+    FAV_FRDCaseStatus VARCHAR (50) NOT NUll,
+    FAV_FRDCaseSection VARCHAR (255),
+    FAV_FRDVerParam VARCHAR (255),
+    FAV_FRDVerRemark VARCHAR (255),
+    FAV_FRDFileVerStatus VARCHAR (50),
+    FAV_FRDReVerRemark VARCHAR (255),
+    FAV_CreatedBy VARCHAR (50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE
+);
+
+
+CREATE TABLE FAV_VerSecMaster (
+    FAV_VerSecSeqNo INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_VerSecID VARCHAR (10) NOT NULL,
+    FAV_VerSecName VARCHAR (100) NOT NULL,
+    FAV_VerSecDesc VARCHAR (255),
+    FAV_CreatedBy VARCHAR(50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE
+);
+
+
+CREATE TABLE FAV_VerParamMaster (
+    FAV_VerParamSeqNo INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_VerParamID INT NOT NULL,
+    FAV_VerSecMstRefID VARCHAR (10) NOT NULL,
+    FAV_VerRefID VARCHAR (10),
+    FAV_VerParamName VARCHAR (255) NOT NULL,
+    FAV_VerParamDesc TEXT,
+    FAV_VerRejCriteria TEXT,
+    FAV_VerPdfPgRef INT,
+    FAV_VerPdfPgX FLOAT,
+    FAV_VerPdfPgY FLOAT,
+    FAV_VerFormType VARCHAR (255),
+    FAV_CreatedBy VARCHAR(50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE,
+    PRIMARY KEY (FAV_VerParamSeqNo, FAV_VerParamID START WITH 10001)
+);
+
+
+CREATE TABLE FAV_DBCaseSummary (
+    FAV_DBCSSeqNo INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_DBCaseId VARCHAR(50) NOT NULL,
+    FAV_DBStatus ENUM('Completed', 'In_process', 'Pending', 'On_Hold') NOT NULL,
+    FAV_CreatedBy VARCHAR(50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE
+);
+
+
+CREATE TABLE FAV_DBClientCmnts (
+    FAV_DBClCmntISeqNo INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_DBCaseId VARCHAR(50) NOT NULL,
+    FAV_DBClientComment TEXT NOT NULL,
+    FAV_DBCasePriority ENUM('low', 'medium', 'high') NOT NULL,
+    FAV_DBDueDt DATE NOT NULL,
+    FAV_CreatedBy VARCHAR(50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE
+);
+
+
+CREATE TABLE FAV_DBQuickUpdts (
+    FAV_DBQUId INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_DBQUUpdateTxt TEXT NOT NULL,
+    FAV_CreatedBy VARCHAR(50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE
+);
+
+
+CREATE TABLE FAV_DBWorkSumry (
+    FAV_DBQSId INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_DBQSUsername VARCHAR(255) NOT NULL,
+    FAV_DBQSCompleted INT,
+    FAV_DBQSInProcess INT,
+    FAV_DBQSPending INT,
+    FAV_DBQSAddTasks INT,
+    FAV_DBQSMonth DATE,
+    FAV_CreatedBy VARCHAR(50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE
+);
+
+
+// Table for Admin user to allocation verification task to verification team
+CREATE TABLE FAV_ADMTaskAllocation (
+    FAV_ATASeqId INT AUTO_INCREMENT PRIMARY KEY,
+    FAV_ATAFileNo VARCHAR(255) NOT NULL,
+    FAV_ATAUserID INT NOT NULL,
+    FAV_ATAUserName VARCHAR(255) NOT NULL,
+    FAV_ATAFileType  VARCHAR(50) NOT NULL,
+    FAV_ATATaskPriority VARCHAR (50),
+    FAV_ATATaskDueDt DATE,
+    FAV_ATAFileVerStatus VARCHAR (50) NOT NULL,
+    FAV_CreatedBy VARCHAR(50), 
+    FAV_CreatedDate DATE,
+    FAV_UpdatedBy VARCHAR(50), 
+    FAV_UpdatedDate DATE
+);
+
+ALTER TABLE FAV_UserMaster ADD CONSTRAINT favuserid_pk PRIMARY KEY (FAV_UserID);
+Drop table fav_usermaster;
+
+/* Insert statements for dummy data insertion into User Master table */
+Insert into fav_usermaster(fav_userseqno, fav_userid, fav_username, fav_userpwd, fav_userrole, fav_userdept) 
+values (1,"1001", "Abhijit","1234", "Developer","IT");
+
+Insert into fav_usermaster(fav_userseqno, fav_userid, fav_username, fav_userpwd, fav_userrole, fav_userdept) 
+values (2,"1002", "Harshal","5678", "Developer","IT");
+
+Insert into fav_usermaster(fav_userseqno, fav_userid, fav_username, fav_userpwd, fav_userrole, fav_userdept) 
+values (3,"1003", "Mukul","9012", "Developer","IT");
+
+Insert into fav_usermaster(fav_userseqno, fav_userid, fav_username, fav_userpwd, fav_userrole, fav_userdept) 
+values (4,"1004", "Vikas","3456", "Team Lead","Operations");
+
+Insert into fav_usermaster(fav_userseqno, fav_userid, fav_username, fav_userpwd, fav_userrole, fav_userdept) 
+values (5,"1005", "Rasika","7890", "Process Expert","Operations");
+
+
+
+/* Insert statements for dummy data insertion into Section Master table */
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1001,"Form Type (Product)","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1002,"Transaction type","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1003,"SUBJECT SECTION","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1004,"Subject Listed/Sold within 12 Months","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1005,"CONTRACT SECTION","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1006,"NEIGHBORHOOD SECTION","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1007,"SITE SECTION","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1008,"IMPROVEMENT SECTION","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1009,"SALES COMPARISON APPROACH","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1010,"PRIOR SALES HISTORY SECTION","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1011,"RECONCILIATION SECTION","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1012,"Cost Approach","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1013,"INCOME APPROACH TO VALUE","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1014,"PUD INFORMATION","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1015,"APPRAISER'S SIGNATURE PAGE","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1016,"Market Conditions Addendum","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1017,"USPAP 2014 Addendum w/Report type","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1018,"Photograph Addendums","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1019,"Floorplan Sketch","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1020,"Maps","Standard Checklist","Admin", SYSDATE());
+INSERT INTO FAV_VERSECMASTER (FAV_VERSECID, FAV_VERSECNAME, FAV_VERSECDESC, FAV_CREATEDBY, FAV_CREATEDDATE) VALUES (1021,"Additional Pages/Data Required","Standard Checklist","Admin", SYSDATE());
+
+
+
+
+
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (1,1001,"Section Master","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (2,1002,"Subject","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (3,1003,"Contract","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (4,1004,"Neighborhood","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (5,1005,"Site","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (6,1006,"Improvements","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (7,1007,"Sales Comparison Approach - 1","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (8,1008,"Reconciliation","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (9,1009,"Sales Comparison Approach - 2","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (10,1010,"Sale History","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (11,1011,"Analysis / Comments","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (12,1012,"Additional Comments","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (13,1013,"Cost Approach","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (14,1014,"Income","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (15,1015,"PUD Information","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (16,1016,"Appraiser Signature & Name","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (17,1017,"Supplemental Addendum","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (18,1018,"Market Research Analysis","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (19,1019,"Condo/Co-Op Projects","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (20,1020,"Subject Photo","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (21,1021,"Subject Interior Photo","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (22,1022,"Comparable Photo","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (23,1023,"Building Sketch","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (24,1024,"Subject Area Map","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (25,1025,"Location Map","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (26,1026,"Plat Map","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (27,1027,"Parcel Map","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (28,1028,"Flood Map","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (29,1029,"Appraisers License","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (30,1030,"E&O Insurance","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (31,1031,"Subject Flood Certificate","Test Desc","Abhijit",sysdate());
+INSERT INTO FAV_VerSecMaster (FAV_VerSecSeqNo, FAV_VerSecID, FAV_VerSecName, FAV_VerSecDesc, FAV_CreatedBy, FAV_CreatedDate) VALUES (32,1032,"Subject Public Record","Test Desc","Abhijit",sysdate());
+
+
+/*Insert statements for dummy data insertion into DB Case Summary Table*/
+Insert into fav_dbcasesummary (fav_dbcaseid,fav_dbstatus, fav_createdby, fav_createddate) values (26,"Completed","",sysdate());
+Insert into fav_dbcasesummary (fav_dbcaseid,fav_dbstatus, fav_createdby, fav_createddate) values (15,"In_process","",sysdate());
+Insert into fav_dbcasesummary (fav_dbcaseid,fav_dbstatus, fav_createdby, fav_createddate) values (34,"Pending","",sysdate());
+Insert into fav_dbcasesummary (fav_dbcaseid,fav_dbstatus, fav_createdby, fav_createddate) values (6,"On_Hold","",sysdate());
+
+
+/*Insert statements for dummy data insertion into Task allocation Table*/
+INSERT INTO fav_admtaskallocation (FAV_ATAFileNo, FAV_ATAUserID, FAV_ATAUserName, FAV_ATAFileType, FAV_ATATaskPriority, FAV_ATATaskDueDt, FAV_ATAFileVerStatus, FAV_CreatedBy, FAV_CreatedDate)
+VALUES ('2311-02039','1001','Abhijit','Full Review','High', SYSDATE(), 'To Do','Admin',SYSDATE());
+
+INSERT INTO fav_admtaskallocation (FAV_ATAFileNo, FAV_ATAUserID, FAV_ATAUserName, FAV_ATAFileType, FAV_ATATaskPriority, FAV_ATATaskDueDt, FAV_ATAFileVerStatus, FAV_CreatedBy, FAV_CreatedDate)
+VALUES ('2311-11999','1001','Abhijit','Full Review','High', SYSDATE(), 'To Do','Admin',SYSDATE());
+
+INSERT INTO fav_admtaskallocation (FAV_ATAFileNo, FAV_ATAUserID, FAV_ATAUserName, FAV_ATAFileType, FAV_ATATaskPriority, FAV_ATATaskDueDt, FAV_ATAFileVerStatus, FAV_CreatedBy, FAV_CreatedDate)
+VALUES ('2494-55444','1001','Abhijit','Update','Medium', SYSDATE() + 1, 'To Do','Admin',SYSDATE());
+
+INSERT INTO fav_admtaskallocation (FAV_ATAFileNo, FAV_ATAUserID, FAV_ATAUserName, FAV_ATAFileType, FAV_ATATaskPriority, FAV_ATATaskDueDt, FAV_ATAFileVerStatus, FAV_CreatedBy, FAV_CreatedDate)
+VALUES ('2355-12345','1001','Abhijit','Update', 'Low', SYSDATE() + 2, 'To Do','Admin',SYSDATE());
+
+/* Command for frontend */
+npm cache clean --force
+Remove-Item -Recurse -Force node_modules
+rm package-lock.json
+npm install
+set NODE_OPTIONS=--openssl-legacy-provider
+npm start
+
+
+https://medium.com/@rjaloudi/building-an-ocr-application-with-node-js-pdf-js-and-tesseract-js-c54fbd039173
