@@ -1,0 +1,229 @@
+/* Styles specific to the Verification Portal */
+.page-container {
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #343a40;
+  color: white;
+  border-radius: 5px;
+}
+
+h1 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.burger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  background-color: #495057;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#nav-links li {
+  margin: 0 15px;
+}
+
+#nav-links button {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s;
+}
+
+#nav-links button:hover {
+  /* background-color: #495057; */
+  background-color: #db332d;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: block;
+  }
+
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #343a40;
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  #nav-links.active {
+    display: flex;
+  }
+
+  #nav-links li {
+    margin: 10px 0;
+  }
+
+  #nav-links button {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 80vh;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .container .dashboard-frame {
+    flex: 1 1 100%;
+  }
+}
+
+/* Section-specific styles */
+.section {
+  flex: 1;
+  padding: 5px;
+  margin: 5px;
+  /* border: 1px solid #ccc; */
+  background-color: #f0f0f0; /* Default background color */
+  overflow: auto;
+}
+
+.section-files {
+  flex: 1;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid darkgray;
+  background-color: #f1e9e2; /* Light red for Files For Verification */
+  overflow: auto;
+  border-radius: 10px; /* Rounded corners */
+}
+
+.section-work {
+  flex: 1;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid darkgray;
+  background-color: #e5ffe5; /* Light green for Work Summary */
+  overflow: auto;
+  border-radius: 10px; /* Rounded corners */
+}
+
+.section-pending {
+  flex: 1;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid darkgray;
+  background-color: #e5e5ff; /* Light blue for Pending Tasks */
+  overflow: auto;
+  border-radius: 10px; /* Rounded corners */
+}
+
+.section-notes {
+  flex: 1;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid darkgray;
+  background-color: #ffffcc; /* Light yellow for Sticky Notes */
+  overflow: auto;
+  border-radius: 10px; /* Rounded corners */
+}
+
+.section-header {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Adjust as needed */
+  /* border: 1px solid #ccc; */
+  font-size: medium;
+}
+
+.grid-header,
+.grid-body {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Ensure 4 columns as per your data */
+  padding: 10px;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Ensure 4 columns */
+  border-top: 1px solid #ccc;
+  padding: 5px;
+  font-size: small;
+}
+
+.grid-row:first-child {
+  border-top: none;
+}
+
+.grid-cell {
+  padding: 5px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+footer {
+  background-color: #343a40; /* Dark gray color */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: auto;
+}

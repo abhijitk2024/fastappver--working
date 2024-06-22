@@ -1,0 +1,158 @@
+.split-screen {
+  display: flex;
+  height: calc(100vh - 50px); /* Adjusting height to accommodate header */
+}
+
+.left-side {
+  flex: 0 0 20%;
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.right-side {
+  flex: 0 0 80%;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  background-color: #343a40;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+}
+
+.user-info {
+  font-weight: normal;
+}
+
+.date-time {
+  font-weight:normal;
+  font-size: small;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  margin-bottom: 20px;
+  padding-left: 75px;
+}
+
+h3{
+  text-align: center;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 0.875em; /* Smaller font size */
+  min-width: 120px; /* Adjust label width as needed */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 5px; /* Smaller padding */
+  font-size: 0.875em; /* Smaller font size */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  flex: 1; /* Expand input/select to fill remaining space */
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  /* justify-content: center;*/
+}
+
+.buttons button {
+  padding: 5px 10px; /* Smaller padding */
+  margin: 5px;
+  background-color: #343a40;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.875em; /* Smaller font size */
+}
+
+.buttons button:hover {
+  background-color: #495057;
+}
+
+input[type="file"] {
+  margin-bottom: 20px;
+  font-size: 0.875em; /* Smaller font size */
+}
+
+.Toastify__toast--success {
+  background-color: #28a745;
+}
+
+.Toastify__toast--error {
+  background-color: #dc3545;
+}
+
+.pdf-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 0.875em; /* Smaller font size */
+}
+
+/* Styling added for Section & parameter field */
+.form-group-param {
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.form-group-param label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 0.875em; /* Smaller font size */
+}
+
+.form-group-param input,
+.form-group-param select {
+  width: 100%;
+  padding: 5px; /* Smaller padding */
+  font-size: 0.875em; /* Smaller font size */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-group-param textarea {
+  resize: vertical; /* Allow vertical resizing */
+  line-height: 1.5; /* Adjust line height for better readability */
+  font-size: 0.875em; /* Adjust font size based on your design */
+  padding: 8px; /* Padding for inner spacing */
+  height: calc(1.5 * 1.5em * 4); /* Calculate height based on line-height and rows */
+  min-height: calc(1.5 * 1.5em * 4); /* Ensure minimum height */
+  border: 1px solid #ccc; /* Optional: Border styling */
+  width: 100%;
+}
+ hr {
+  border-top: 1px solid orange;
+ }
